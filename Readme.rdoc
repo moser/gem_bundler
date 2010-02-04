@@ -1,0 +1,30 @@
+= Gem bundler
+A simple lib for bundling gems into jars. This obviously is intended for use with JRuby.
+Install the gem and create a rake task and a configuration file in your project:
+
+your/config/gems.rb:
+  GemBundler.instance.configure do |g|
+    g.gem "foo_gem"
+    g.gem "activerecord", ">= 2.3"
+    
+    g.setup "tmp/gems", "foo/lib"
+  end
+
+Rake task:
+  require 'gem_bundler'
+  require 'path/to/your/config/gems.rb'
+  
+  desc "Bundle gems into a JAR file"
+  task :bundle_gems do
+    GemBundler.instance.bundle
+  end
+  
+This will install the configured gems into "tmp/gems" (this dir will be deleted, so be cautious), move
+any JAR files inside the gems to "foo/lib" and package the gems into "foo/lib/gems.jar".
+
+In your JRuby application you should put "foo/lib" onto your $LOAD_PATH (because the moved jars from the gems 
+will probably be required) and require gems.jar.
+
+See http://blog.nicksieger.com/articles/2009/01/10/jruby-1-1-6-gems-in-a-jar for details.
+
+I use this mechanism to bundle gems to go with applications packaged using rawr[http://rawr.rubyforge.org/].
