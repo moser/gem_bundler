@@ -23,7 +23,7 @@ class GemBundler
   
   # Adds a gem
   #   gem "activerecord", ">= 2.3.1"
-  def gem(name, version = "")
+  def gem(name, version = Gem::Requirement.default)
     @gems ||= {}
     @gems[name] = version
   end
