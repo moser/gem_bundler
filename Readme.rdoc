@@ -5,6 +5,7 @@ Install the gem and create a rake task and a configuration file in your project:
 your/config/gems.rb:
   GemBundler.instance.configure do |g|
     g.gem "foo_gem"
+    g.gem "path/to/a/gemfile/some_gem-0.3.2.gem" #version requirement will not work here
     g.gem "activerecord", ">= 2.3"
     
     g.setup "tmp/gems", "foo/lib"
