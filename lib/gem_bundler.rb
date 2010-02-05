@@ -28,7 +28,8 @@ class GemBundler
     @gems[name] = version
   end
   
-  # Checks if all required gems are installed
+  # Checks if all required gems are installed and returns
+  # gems that miss.
   def check_gems
     @gems ||= {}
     @gems.keys.select { |g| Gem.source_index.find_name(g, @gems[g]).size == 0 }
