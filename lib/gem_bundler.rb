@@ -47,7 +47,7 @@ class GemBundler
     FileUtils.mkdir_p install_dir
     installer = Gem::DependencyInstaller.new(default_options)
     @gems.each do |name, version|
-      puts "Installing #{name}"
+      puts "Installing #{name} (#{version})"
       installer.install(name, version || Gem::Requirement.default)      
     end
     Dir.glob("#{install_dir}/**/*.jar").each do |jar|
