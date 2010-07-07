@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = 'gem_bundler'
-  s.version = '0.1'
+  s.version = '0.2'
   s.summary = "Bundles gems into jars."
   s.files = Dir['LICENSE', 'Rakefile', 'Readme.rdoc', 'spec/**/*', 'lib/**/*'].select { |f| !(f =~ /~$/) }
   s.require_path = 'lib'
